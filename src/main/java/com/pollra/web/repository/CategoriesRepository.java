@@ -9,5 +9,16 @@ import java.util.Optional;
 
 @Repository
 public interface CategoriesRepository extends JpaRepository<CategoriesDAO, Long> {
+    // Create Category
+    // save method
+
+
+    // update category
+    // save method
+
+    // delete
+    // remove method
+
+    // Read List
     List<CategoriesDAO> findAllByOwner(String owner);
 }

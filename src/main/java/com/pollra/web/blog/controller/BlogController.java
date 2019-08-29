@@ -1,7 +1,6 @@
 package com.pollra.web.blog.controller;
 
-import com.pollra.tool.http.InfoPrint;
-import com.pollra.web.blog.domain.BlogInfoDAO;
+import com.pollra.web.blog.domain.BlogInfo;
 import com.pollra.web.blog.service.BlogInfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -26,9 +25,9 @@ public class BlogController {
 
     @GetMapping("/info")
     public ResponseEntity<?> getBlogInfo(HttpServletRequest request){
-        BlogInfoDAO blogInfoDAO = new BlogInfoDAO();
+        BlogInfo blogInfo = new BlogInfo();
 //        InfoPrint.headersPrint(request);
-        blogInfoDAO = blogService.getBlogInfoOfId("pollra");
-        return new ResponseEntity<>(blogInfoDAO, HttpStatus.OK);
+        blogInfo = blogService.getBlogInfoOfId("pollra");
+        return new ResponseEntity<>(blogInfo, HttpStatus.OK);
     }
 }

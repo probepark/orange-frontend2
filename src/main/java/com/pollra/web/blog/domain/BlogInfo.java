@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Table(name = "blog_info")
-public class BlogInfoDAO {
+public class BlogInfo {
     /**
      * 블로그 소유자의 아이디.
      */

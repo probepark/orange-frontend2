@@ -1,14 +1,26 @@
 package com.pollra.web.repository;
 
-import com.pollra.web.blog.domain.BlogInfoDAO;
+import com.pollra.web.blog.domain.BlogInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface BlogRepository extends JpaRepository<BlogInfoDAO, String> {
+public interface BlogRepository extends JpaRepository<BlogInfo, String> {
+    // Create
+    // save method
+
+    // Update
+    // save method
+
+    // Delete
+    // remove method
+
+    // Read
     @Override
-    BlogInfoDAO getOne(String id);
-    Optional<BlogInfoDAO> findById(String id);
+    BlogInfo getOne(String id);
+    Optional<BlogInfo> findById(String id);
+
+
 }
