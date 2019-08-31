@@ -6,10 +6,7 @@ import com.pollra.web.user.domain.en.Range;
 import com.pollra.web.user.domain.en.TargetUser;
 import com.pollra.web.user.domain.UserAccount;
 import com.pollra.web.user.domain.en.Type;
-import com.pollra.web.user.exception.IncorrectUserDataException;
-import com.pollra.web.user.exception.UserDuplicateException;
-import com.pollra.web.user.exception.UserPasswordMatchingException;
-import com.pollra.web.user.exception.UserServiceException;
+import com.pollra.web.user.exception.*;
 import com.pollra.web.user.tool.UserDataPretreatmentTool;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +42,6 @@ public class UserServiceImpl implements UserService{
 
         // DB에 중복되는 객체가 있는지 확인한다
         if(!idDuplicateCheck()){
-            // 객체가 널이 아닐때만 작동
             throw new UserDuplicateException("해당 유저가 이미 존재합니다.");
         }
 
@@ -53,12 +49,11 @@ public class UserServiceImpl implements UserService{
         passwordMatchCheck();
 
         // DB에 입력한다
-
-
-        // UserAccount 에 대한 UserInfo 를 생성한다
-
-        // 생성한 데이터를 DB에 저장
-
+        UserAccount dbInsertionResult = accountRepository.save(userAccount);
+        if(tool.isNull(TargetUser.ACCOUNT, dbInsertionResult)){
+            throw new UserDataInsertionException("데이터 입력 과정에서 문제가 발생했습니다.");
+        }
+        // userInfo 작성 후
     }
 
     /**

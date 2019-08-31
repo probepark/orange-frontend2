@@ -1,0 +1,22 @@
+# 1. Application settings
+server:
+  port: 8081
+  servlet:
+    session:
+      timeout: 1800s
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  application:
+    name: orange-server
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  # 2. Database settings
+  datasource:
+    url: jdbc:postgresql://13.124.67.214:5432/orange
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: tmdrms159
