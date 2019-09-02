@@ -1,6 +1,6 @@
 # 1. Application settings
 server:
-  port: 8081
+  port: 80
   servlet:
     session:
       timeout: 1800s
