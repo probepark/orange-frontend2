@@ -21,6 +21,7 @@
   #content-box{
     width: 100%;
     min-height: 500px;
+    display: table;
   }
   #content-info{
     width: 100%;

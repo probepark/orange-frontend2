@@ -1,13 +1,13 @@
 <template>
-  <div class="userIcon">
+  <router-link class="userIcon" to="/login">
     <img :src="imgPath"/>
-  </div>
+  </router-link>
 </template>
 
 <script>
     export default {
         props:['imgPath'],
-        name: "UserIcon"
+        name: "UserIcon",
     }
 </script>
 

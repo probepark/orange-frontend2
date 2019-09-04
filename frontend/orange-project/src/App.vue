@@ -86,4 +86,7 @@ export default {
     display: inline-block;
     float: left;
   }
+  .contents{
+    transition: all .2s ease;
+  }
 </style>

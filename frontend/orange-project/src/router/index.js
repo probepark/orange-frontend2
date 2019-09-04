@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Post from '@/components/pages/post';
 import BoardList from '@/components/pages/board-list'
 import Login from '@/components/pages/login'
+import SignUp from '@/components/pages/signup'
 
 Vue.use(Router)
 
@@ -27,6 +28,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
-    }
+    },
+    // {
+    //   path: '/signup',
+    //   name: 'SignUp',
+    //   component: SignUp
+    // }
   ]
 })

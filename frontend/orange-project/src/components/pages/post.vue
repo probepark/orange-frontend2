@@ -44,6 +44,8 @@
             }
         },
         created() {
+            // 네비게이션 좌측 상단의 리다이렉트 버튼의 경로를 변경
+            this.$store.commit("page_redirect_update","/login");
             // 블로그와 포스팅 정보를 가져옴.
             this.get_blogInfo();
             // this.get_boardInfo();

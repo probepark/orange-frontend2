@@ -1,15 +1,23 @@
 <template>
   <div id="login-page">
-    aaa
+    <login-form></login-form>
   </div>
 </template>
 
 <script>
-    export default {
-        name: "login"
-    }
+
+  import LoginForm from "../molecules/contents/sign/login-form";
+  export default {
+      name: "login",
+      components: {LoginForm},
+  }
 </script>
 
 <style scoped>
-
+  #login-page{
+    width: 100%;
+    display: table;
+    min-height: 800px;
+    position: relative;
+  }
 </style>

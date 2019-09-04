@@ -4,7 +4,15 @@
       <span slot="content-parent">{{this.$store.state.board_info.parent}}</span>
       <span slot="content-title">{{this.$route.params.category}}</span>
     </content-info>
-    <div slot="contents" class="board-list">
+    <div
+      slot="contents"
+      class="board-list"
+      v-if="this.$store.state.board_list.title !== ''"
+    >
+      <div class="board-none-box">
+        <p class="icon-help-circled"></p>
+        <span>포스팅이 존재하지 않습니다.</span>
+      </div>
       <board-item
         v-for="(board, index) in this.$store.state.board_list"
         :key="index"
@@ -14,8 +22,8 @@
         <template slot="item-date">{{board.date}}</template>
         <template slot="item-title">{{board.title}}</template>
       </board-item>
-
     </div>
+
   </content-box>
 </template>
 
@@ -55,6 +63,11 @@
           }
       },
       created() {
+          // 네비게이션 좌측 상단의 리다이렉트 버튼의 경로를 변경
+          setTimeout(function () {
+            this.$store.commit("page_redirect_update","/login");
+          },100)
+
           new Promise(function (resolve, reject) {
               this.get_board_list();
               if(this.$store.state.board_info.parent==="Error"){
@@ -79,5 +92,16 @@
     display: flex;
     min-height: 300px;
     flex-flow: row wrap;
+  }
+  .board-none-box{
+    width: 100%;
+  }
+  .board-none-box > p{
+    font-size: 200px;
+    color: #0088cc;
+  }
+  .board-none-box > span{
+    font-size: 22px;
+    color: #0088cc;
   }
 </style>
