@@ -2,25 +2,24 @@ package com.pollra.web.user.service;
 
 import com.pollra.web.repository.UserAccountRepository;
 import com.pollra.web.repository.UserInfoRepository;
+import com.pollra.web.user.domain.en.AccessClassification;
 import com.pollra.web.user.domain.en.Range;
 import com.pollra.web.user.domain.en.TargetUser;
 import com.pollra.web.user.domain.UserAccount;
-import com.pollra.web.user.domain.en.Type;
 import com.pollra.web.user.exception.*;
 import com.pollra.web.user.tool.UserDataPretreatmentTool;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserAccountServiceImpl implements UserService{
 
     private UserAccountRepository accountRepository;
     private UserInfoRepository infoRepository;
     private UserDataPretreatmentTool tool;
 
-    public UserServiceImpl(UserAccountRepository accountRepository, UserInfoRepository infoRepository, UserDataPretreatmentTool tool) {
+    public UserAccountServiceImpl(UserAccountRepository accountRepository, UserInfoRepository infoRepository, UserDataPretreatmentTool tool) {
         this.accountRepository = accountRepository;
         this.infoRepository = infoRepository;
         this.tool = tool;
@@ -53,7 +52,7 @@ public class UserServiceImpl implements UserService{
         if(tool.isNull(TargetUser.ACCOUNT, dbInsertionResult)){
             throw new UserDataInsertionException("데이터 입력 과정에서 문제가 발생했습니다.");
         }
-        // userInfo 작성 후
+        // userInfo 작성 작업과 연결 되어야함
     }
 
     /**
@@ -68,13 +67,13 @@ public class UserServiceImpl implements UserService{
      * read
      */
     @Override
-    public Object readOne(TargetUser targetUser, Type type) {
+    public Object readOne(AccessClassification accessClassification) {
 
         return null;
     }
 
     @Override
-    public List<Object> readList(TargetUser targetUser) {
+    public List<Object> readList(AccessClassification accessClassification) {
         return null;
     }
 
@@ -82,7 +81,7 @@ public class UserServiceImpl implements UserService{
      * delete
      */
     @Override
-    public void deleteOne(TargetUser targetUser) {
+    public void deleteOne(AccessClassification accessClassification) {
 
     }
 
@@ -112,7 +111,7 @@ public class UserServiceImpl implements UserService{
         UserAccount userAccount = tool.getUserAccount(Range.ID);
 
         // null check
-        if(!tool.isNull(TargetUser.ACCOUNT_ID, readOne(TargetUser.ACCOUNT, Type.ID))){
+        if(!tool.isNull(TargetUser.ACCOUNT_ID, readOne(AccessClassification.ID))){
             return false;
         }
         // 해당 아이디를 사용해도 됨.

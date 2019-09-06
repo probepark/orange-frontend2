@@ -13,7 +13,7 @@ public class UserInfo {
 
     @Id
     @GeneratedValue
-    private Long num;
+    private String id;
 
     private String auth;
 

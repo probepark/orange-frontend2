@@ -1,10 +1,8 @@
 package com.pollra.web.user.service;
 
-import com.pollra.web.user.domain.en.TargetUser;
-import com.pollra.web.user.domain.en.Type;
+import com.pollra.web.user.domain.en.AccessClassification;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Service
@@ -16,11 +14,11 @@ public interface UserService {
     void updateOne();
 
     // read
-    Object readOne(TargetUser targetUser, Type type);
-    List<Object> readList(TargetUser targetUser);
+    Object readOne(AccessClassification ac);
+    List<Object> readList(AccessClassification ac);
 
     // delete
-    void deleteOne(TargetUser targetUser);
+    void deleteOne(AccessClassification ac);
 
     // other
     boolean passwordMatchCheck();

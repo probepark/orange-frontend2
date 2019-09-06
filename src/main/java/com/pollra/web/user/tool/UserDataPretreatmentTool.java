@@ -24,7 +24,9 @@ public class UserDataPretreatmentTool {
 
     // user info
     private final String INFO_EMAIL = "";
-    private final String INFO_AUTH = "";
+
+    // 권한정보가 넘어올리가 없잖어..
+//    private final String INFO_AUTH = "";
 
     public UserAccount getUserAccount(Range range) {
         UserAccount userAccount = new UserAccount();
@@ -49,7 +51,8 @@ public class UserDataPretreatmentTool {
     public UserInfo getUserInfo(){
         UserInfo userInfo = new UserInfo();
         userInfo.setEmail(request.getParameter(INFO_EMAIL));
-        userInfo.setAuth(request.getParameter(INFO_AUTH));
+        userInfo.setAuth("");
+        userInfo.setId(request.getParameter(USER_ID));
         return userInfo;
     }
 
@@ -79,7 +82,7 @@ public class UserDataPretreatmentTool {
     }
 
     private boolean isNull_info(UserInfo userInfo){
-        // 필수항목이 존재하지 않는 데이터
+        if(userInfo.getId()=="") return true;
         return false;
     }
 }

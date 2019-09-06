@@ -1,5 +1,5 @@
 package com.pollra.web.user.domain.en;
 
-public enum Type {
+public enum AccessClassification {
     NUM, ID
 }
