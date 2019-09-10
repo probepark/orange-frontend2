@@ -1,27 +1,33 @@
 package com.pollra.web.user.service;
 
 import com.pollra.web.user.domain.en.AccessClassification;
+import com.pollra.web.user.exception.UserServiceException;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public interface UserService {
+public interface UserService extends UserDetailsService {
     // create
-    void createOne();
+    void createOne() throws UserServiceException;
 
     // update
-    void updateOne();
+    void updateOne() throws UserServiceException;
 
     // read
-    Object readOne(AccessClassification ac);
-    List<Object> readList(AccessClassification ac);
+    Object readOne(AccessClassification ac) throws UserServiceException;
+    List<Object> readList(AccessClassification ac) throws UserServiceException;
 
     // delete
-    void deleteOne(AccessClassification ac);
+    void deleteOne(AccessClassification ac) throws UserServiceException;
 
     // other
-    boolean passwordMatchCheck();
+    boolean passwordMatchCheck() ;
     boolean idDuplicateCheck();
 
+    @Override
+    UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
 }

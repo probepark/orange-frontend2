@@ -1,5 +1,6 @@
 package com.pollra.web.user.domain;
 
+import com.pollra.web.user.domain.en.UserAuth;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,5 +23,12 @@ public class UserAccount {
 
     @Column(nullable = false, name = "password_match")
     private String passwordMatch;
+
+    @Column(nullable = false)
+    private String auth;
+
+    private String email;
+
+    private boolean locked = false;
 
 }

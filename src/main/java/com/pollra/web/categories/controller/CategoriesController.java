@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/api")
 @CrossOrigin
 @Slf4j
 public class CategoriesController {
@@ -24,7 +24,7 @@ public class CategoriesController {
         this.categoriesService = categoriesService;
     }
 
-    @GetMapping("/list")
+    @GetMapping("public/categories/list")
     public ResponseEntity<?> getCategoriesList(){
         List<CategoriesDAO> categories = categoriesService.getCategoriesList("pollra");
         log.info("categories.size(): "+ categories.size());
