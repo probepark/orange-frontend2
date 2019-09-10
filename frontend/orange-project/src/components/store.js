@@ -59,7 +59,7 @@ export const store = new Vuex.Store({
      */
     set_board_list:(state, currentPath) =>{
       console.log(`set_board_list[${currentPath}]`);
-      axios.get("http://110.12.8.172/boards/"+currentPath)
+      axios.get("/boards/"+currentPath)
         .then(function (response) {
           state.board_list = response;
           console.log(`get_board_list[success]: ${response}`)
@@ -74,7 +74,7 @@ export const store = new Vuex.Store({
      * @param state       vuex store
      */
     set_blog_info:(state)=>{
-      axios.get("http://110.12.8.172/blog/info")
+      axios.get("/blog/info")
         .then(function (response) {
           console.log("수신한 정보[get_blogInfo] : "+JSON.stringify(response.data));
           state.blog_info = response.data;
@@ -89,7 +89,7 @@ export const store = new Vuex.Store({
      * @param state
      */
     set_categories_list:(state)=>{
-      axios.get("http://110.12.8.172/categories/list")
+      axios.get("/categories/list")
         .then(function (response) {
           console.log(`수신한 정보[set_categories_list]: ${JSON.stringify(response.data)}`)
           state.categories = response.data;
@@ -118,7 +118,7 @@ export const store = new Vuex.Store({
         state.sign_data.id_msg = "처리중...";
         state.sign_data.id_icon = "icon-spin1 spin";
         state.sign_data.id_server_error = true;
-        axios.post("http://110.12.8.172/sign/check/id",{
+        axios.post("/sign/check/id",{
           "sign_id":state.sign_data.id
         })
           .then(function (response) {

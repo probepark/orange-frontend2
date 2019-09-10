@@ -16,7 +16,7 @@ export default new Router({
     },
     {
       path: '/post/:num',
-      name: 'Post',
+      name: 'Post Detail',
       component: Post
     },
     {
